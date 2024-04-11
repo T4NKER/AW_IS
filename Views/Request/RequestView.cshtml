@@ -1,0 +1,73 @@
+
+
+
+@model IEnumerable<RequestManager.Models.RequestModel>
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>Request Manager</title>
+    <link rel="stylesheet" type="text/css" href="~/css/requests.css" />
+</head>
+<body>
+<h2>Active Support Requests</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Request Time</th>
+            <th>Deadline Time</th>
+            <th>Mark as Done</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var request in Model)
+            {
+                <tr @if (request.DeadlineTime <= DateTime.Now.AddHours(1)) { <text>style="background:red"</text> }>
+                    <td>@request.Id</td>
+                    <td class="description">@request.Description</td>
+                    <td>@request.RequestTime.ToString("dd/MM/yyyy, HH:mm")</td>
+                    <td>@request.DeadlineTime.ToString("dd/MM/yyyy, HH:mm")</td>
+                    <td>
+                        <button class="request-done-btn" data-id="@request.Id">Done</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr style="font-size: large;">
+                <td>No active support requests.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination">
+    <button class="prev-page-btn" data-type="previous">Previous</button>
+    <button class="next-page-btn" data-type="next">Next</button>
+</div>
+<button type="button" id="submitRequestBtn">Submit a request</button>
+
+<div id="requestModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Submit a Request</h3>
+        <form>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+            <br>
+            <label for="deadlineTime">Deadline:</label>
+            <input type="datetime-local" id="deadlineTime" name="deadlineTime" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+
+@section Scripts {
+    <script src="~/js/requests.js"></script>
+}

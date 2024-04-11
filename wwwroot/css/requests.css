@@ -1,0 +1,44 @@
+.description {
+    max-width: 200px !important; 
+    white-space: nowrap !important; 
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; 
+}
+
+.expanded-description {
+    max-width: 1200px;
+    word-wrap: break-word; 
+    white-space: normal; 
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.table tbody tr.expanded {
+    height: auto;
+}
+
+.table tbody tr:hover {
+    cursor: pointer;
+}
+
+.table tbody tr.expanded-row .expanded-description {
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.table tbody tr.expanded .description {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+}
+
+.prev-page-btn, .next-page-btn {
+    margin: 15px;
+    margin-left: 0px;
+    width: 80px;
+}
