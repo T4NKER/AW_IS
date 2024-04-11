@@ -4,7 +4,7 @@
 
 Veenduge, et teil oleks installitud .NET 8.0. Selle projekti loomiseks kasutasin Visual Studio Code'is WSL-i.
 
-Terminali kasutamine
+Kirjuta terminali
 
 `dotnet restore && dotnet run`
 
