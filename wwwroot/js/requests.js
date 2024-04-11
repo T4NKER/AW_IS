@@ -1,9 +1,8 @@
 
-assignButtons()
-checkDeadLines()
-
 document.addEventListener("DOMContentLoaded", function () {
+    assignButtons();
     checkDataSize();
+    checkDeadLines();
 });
 
 function checkDataSize() {
