@@ -8,8 +8,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddServerSentEvents();
 builder.Services.AddSingleton<RequestService>();
 builder.Services.AddSingleton<SSEService>();
- 
-//builder.Services.AddHostedService<ServerEventsWorker>(); 
 
 
 var app = builder.Build();

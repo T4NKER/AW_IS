@@ -14,9 +14,13 @@ public class RequestService
 
     private void CreateSupportRequests()
     {
-        _supportRequests = Enumerable.Range(1, 12)
-                                     .Select(i => new RequestModel(i, $"Sample Request {i}", DateTime.Now, DateTime.Now.AddDays(1)))
-                                     .ToList();
+    DateTime now = DateTime.Now;
+    _supportRequests = Enumerable.Range(1, 12)
+                                 .Select(i => new RequestModel(i, $"Sample Request {i}", now, now.AddDays(1)))
+                                 .ToList();
+
+    _supportRequests.Add(new RequestModel(13, "Request in the past", now.AddHours(-1), now.AddHours(-1)));
+    _supportRequests.Add(new RequestModel(14, "Request within one hour", now.AddMinutes(30), now.AddMinutes(30)));
     }
 
     public void CreateRequest(RequestModel request)

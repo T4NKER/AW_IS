@@ -76,7 +76,6 @@ namespace RequestManager.Controllers
             var errorViewModel = new ErrorViewModel
             {
                 RequestId = Guid.NewGuid().ToString(),
-                // You can add more properties to the ErrorViewModel if needed
             };
 
             return View("Error", errorViewModel);
