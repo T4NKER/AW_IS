@@ -42,7 +42,7 @@ namespace RequestManager.Tests.Models {
       var exception = Assert.Throws < ArgumentException > (() =>requestService.CreateRequest(pastDeadlineRequest));
 
       // Assert
-      Assert.Equal("Deadline time cannot be before current time", exception.Message);
+      Assert.Equal("Deadline time cannot be before current time or within one hour", exception.Message);
     }
 
     [Fact]
@@ -55,7 +55,7 @@ namespace RequestManager.Tests.Models {
       var exception = Assert.Throws < ArgumentException > (() =>requestService.CreateRequest(nearDeadlineRequest));
 
       // Assert
-      Assert.Equal("Deadline time cannot be before current time", exception.Message);
+      Assert.Equal("Deadline time cannot be before current time or within one hour", exception.Message);
     }
 
     [Fact]
