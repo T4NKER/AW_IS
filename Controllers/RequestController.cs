@@ -21,8 +21,7 @@ namespace RequestManager.Controllers {
             try
             {
                 var activeRequests = _requestService.GetRequests(id);
-                Console.WriteLine("id: " + id);
-                return View(activeRequests);
+                return View("RequestView", activeRequests);
             }
             catch (Exception ex)
             {

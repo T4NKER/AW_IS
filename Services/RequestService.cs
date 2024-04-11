@@ -15,6 +15,12 @@ public class RequestService
 
     public void CreateRequest(RequestModel request)
     {
+        if (request.Description == "") {
+            throw new ArgumentException("Description cannot be empty");
+        }
+        if (request.DeadlineTime <= DateTime.Now.AddHours(1)) {
+            throw new ArgumentException("Deadline time cannot be before current time");
+        }
         request.Id = _supportRequests.Count > 0 ? _supportRequests.Max(r => r.Id) + 1 : 1;
                     request.RequestTime = DateTime.Now;
 
@@ -40,5 +46,10 @@ public class RequestService
                                          .Skip((id - 1) * pageSize)
                                          .Take(pageSize);
         return activeRequests;
+    }
+
+    public IEnumerable<RequestModel> GetAllRequests()
+    {
+    return _supportRequests;
     }
 }
